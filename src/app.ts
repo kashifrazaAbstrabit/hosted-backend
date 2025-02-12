@@ -13,8 +13,14 @@ import { GithubSignUpStrategy } from "./utils/GithubSignUpStrategy";
 import { errorHandler } from "./common/utils/handlers";
 import devRoute from "./routes/devRoutes";
 import routes from "./routes";
+import { createClient } from "redis";
 
 dotenv.config();
+
+const redisClient = createClient({
+  url: process.env.REDIS_URL || "redis://localhost:6379",
+});
+redisClient.connect().catch(console.error);
 
 //sever
 const app = express();
@@ -26,7 +32,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://kaleidoscopic-empanada-97d619.netlify.app",
-      "https://hosted-frontend-8d7h04xyq-kashifrazaabstrabits-projects.vercel.app"
+      "https://hosted-frontend-8d7h04xyq-kashifrazaabstrabits-projects.vercel.app",
     ], // Frontend URL
     credentials: true, // Allow cookies and credentials
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
@@ -44,6 +50,11 @@ app.use(
     secret: process.env.SESSION_SECRET || "defaultSecret",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "development", // Secure only in production
+      httpOnly: true,
+      sameSite: "strict",
+    },
   })
 );
 
