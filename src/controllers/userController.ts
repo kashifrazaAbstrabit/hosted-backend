@@ -385,30 +385,30 @@ export const login = async (
 
     const optionsForAccessToken = {
       expires: new Date(Date.now() + ms(accessTokenExpire as ms.StringValue)),
-      secure: process.env.NODE_ENV === "production", // Set to true in production
+      secure: process.env.NODE_ENV === "development", // Set to true in development
       httpOnly: true,
       sameSite:
-        process.env.NODE_ENV === "production"
+        process.env.NODE_ENV === "development"
           ? "none"
-          : ("lax" as "none" | "lax" | "strict"), // Use "none" in production
+          : ("lax" as "none" | "lax" | "strict"), // Use "none" in development
       domain:
-        process.env.NODE_ENV === "production"
+        process.env.NODE_ENV === "development"
           ? "https://hosted-frontend-8d7h04xyq-kashifrazaabstrabits-projects.vercel.app"
-          : undefined, // Set domain in production
+          : undefined, // Set domain in development
     };
 
     const optionsForRefreshToken = {
       expires: new Date(Date.now() + ms(refreshTokenExpire as ms.StringValue)),
-      secure: process.env.NODE_ENV === "production", // Set to true in production
+      secure: process.env.NODE_ENV === "development", // Set to true in development
       httpOnly: true,
       sameSite:
-        process.env.NODE_ENV === "production"
+        process.env.NODE_ENV === "development"
           ? "none"
-          : ("lax" as "none" | "lax" | "strict"), // Use "none" in production
+          : ("lax" as "none" | "lax" | "strict"), // Use "none" in development
       domain:
-        process.env.NODE_ENV === "production"
+        process.env.NODE_ENV === "development"
           ? "https://hosted-frontend-8d7h04xyq-kashifrazaabstrabits-projects.vercel.app"
-          : undefined, // Set domain in production
+          : undefined, // Set domain in development
     };
 
     res
@@ -542,12 +542,12 @@ export const refreshAccessToken = async (
 
     const options = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Set to true in production
-      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // Use "None" in production
+      secure: process.env.NODE_ENV === "development", // Set to true in development
+      sameSite: process.env.NODE_ENV === "development" ? "None" : "Lax", // Use "None" in development
       domain:
-        process.env.NODE_ENV === "production"
+        process.env.NODE_ENV === "development"
           ? "https://hosted-frontend-8d7h04xyq-kashifrazaabstrabits-projects.vercel.app"
-          : undefined, // Set domain in production
+          : undefined, // Set domain in development
     };
 
     res
