@@ -391,10 +391,6 @@ export const login = async (
         process.env.NODE_ENV === "development"
           ? "none"
           : ("lax" as "none" | "lax" | "strict"), // Use "none" in development
-      domain:
-        process.env.NODE_ENV === "development"
-          ? "https://hosted-frontend-68sxd0mv4-kashifrazaabstrabits-projects.vercel.app"
-          : undefined, // Set domain in development
     };
 
     const optionsForRefreshToken = {
@@ -405,10 +401,6 @@ export const login = async (
         process.env.NODE_ENV === "development"
           ? "none"
           : ("lax" as "none" | "lax" | "strict"), // Use "none" in development
-      domain:
-        process.env.NODE_ENV === "development"
-          ? "https://hosted-frontend-68sxd0mv4-kashifrazaabstrabits-projects.vercel.app"
-          : undefined, // Set domain in development
     };
 
     res
@@ -544,10 +536,6 @@ export const refreshAccessToken = async (
       httpOnly: true,
       secure: process.env.NODE_ENV === "development", // Set to true in development
       sameSite: process.env.NODE_ENV === "development" ? "None" : "Lax", // Use "None" in development
-      domain:
-        process.env.NODE_ENV === "development"
-          ? "https://hosted-frontend-68sxd0mv4-kashifrazaabstrabits-projects.vercel.app"
-          : undefined, // Set domain in development
     };
 
     res
