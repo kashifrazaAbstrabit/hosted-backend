@@ -32,8 +32,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://kaleidoscopic-empanada-97d619.netlify.app",
-      "https://hosted-frontend-8d7h04xyq-kashifrazaabstrabits-projects.vercel.app",
-      "https://hosted-frontend-wheat.vercel.app",
+      "https://hosted-frontend-68sxd0mv4-kashifrazaabstrabits-projects.vercel.app",
     ], // Frontend URL
     credentials: true, // Allow cookies and credentials
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods

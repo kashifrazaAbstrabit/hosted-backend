@@ -393,7 +393,7 @@ export const login = async (
           : ("lax" as "none" | "lax" | "strict"), // Use "none" in development
       domain:
         process.env.NODE_ENV === "development"
-          ? "https://hosted-frontend-wheat.vercel.app"
+          ? "https://hosted-frontend-68sxd0mv4-kashifrazaabstrabits-projects.vercel.app"
           : undefined, // Set domain in development
     };
 
@@ -407,7 +407,7 @@ export const login = async (
           : ("lax" as "none" | "lax" | "strict"), // Use "none" in development
       domain:
         process.env.NODE_ENV === "development"
-          ? "https://hosted-frontend-wheat.vercel.app"
+          ? "https://hosted-frontend-68sxd0mv4-kashifrazaabstrabits-projects.vercel.app"
           : undefined, // Set domain in development
     };
 
@@ -546,7 +546,7 @@ export const refreshAccessToken = async (
       sameSite: process.env.NODE_ENV === "development" ? "None" : "Lax", // Use "None" in development
       domain:
         process.env.NODE_ENV === "development"
-          ? "https://hosted-frontend-wheat.vercel.app"
+          ? "https://hosted-frontend-68sxd0mv4-kashifrazaabstrabits-projects.vercel.app"
           : undefined, // Set domain in development
     };
 
