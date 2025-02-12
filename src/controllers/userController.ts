@@ -383,24 +383,32 @@ export const login = async (
       );
     }
 
-    const optionsForAccessToken: {
-      expires: Date;
-      secure: boolean;
-      httpOnly: boolean;
-    } = {
+    const optionsForAccessToken = {
       expires: new Date(Date.now() + ms(accessTokenExpire as ms.StringValue)),
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === "production", // Set to true in production
       httpOnly: true,
+      sameSite:
+        process.env.NODE_ENV === "production"
+          ? "none"
+          : ("lax" as "none" | "lax" | "strict"), // Use "none" in production
+      domain:
+        process.env.NODE_ENV === "production"
+          ? "https://hosted-frontend-8d7h04xyq-kashifrazaabstrabits-projects.vercel.app"
+          : undefined, // Set domain in production
     };
 
-    const optionsForRefreshToken: {
-      expires: Date;
-      secure: boolean;
-      httpOnly: boolean;
-    } = {
+    const optionsForRefreshToken = {
       expires: new Date(Date.now() + ms(refreshTokenExpire as ms.StringValue)),
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === "production", // Set to true in production
       httpOnly: true,
+      sameSite:
+        process.env.NODE_ENV === "production"
+          ? "none"
+          : ("lax" as "none" | "lax" | "strict"), // Use "none" in production
+      domain:
+        process.env.NODE_ENV === "production"
+          ? "https://hosted-frontend-8d7h04xyq-kashifrazaabstrabits-projects.vercel.app"
+          : undefined, // Set domain in production
     };
 
     res
@@ -534,8 +542,12 @@ export const refreshAccessToken = async (
 
     const options = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Secure only in production
-      sameSite: "Strict",
+      secure: process.env.NODE_ENV === "production", // Set to true in production
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // Use "None" in production
+      domain:
+        process.env.NODE_ENV === "production"
+          ? "https://hosted-frontend-8d7h04xyq-kashifrazaabstrabits-projects.vercel.app"
+          : undefined, // Set domain in production
     };
 
     res
